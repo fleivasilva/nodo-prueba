@@ -89,7 +89,22 @@ function listTeamsByCountry () {
 
 // 2 Arreglo con los nombres de los equipos ordenados de mayor a menor por la cantidad de victorias en champions league.
 function sortTeamsByWins () {
-  // CODE HERE
+  winsByTeams.sort((a, b) => {
+    return a.wins > b.wins ? 1 : -1;
+    });
+
+    let victoriasEquipos = winsByTeams;
+    let Equipos = teams;
+    let nombreEquiposVictorias = [];
+
+    victoriasEquipos.forEach(function(elemento1) {
+      Equipos.forEach(function(elemento2) {
+        if(elemento2.id === elemento1.teamId) {
+          nombreEquiposVictorias.push("name: "+elemento2.name+" - wins: "+elemento1.wins)
+        }
+      });
+    });
+    return nombreEquiposVictorias;
 }
 
 // 3 Arreglo de objetos en donde se muestre el nombre de las ligas y la sumatoria de las victorias de los equipos que pertenecen a ellas.
